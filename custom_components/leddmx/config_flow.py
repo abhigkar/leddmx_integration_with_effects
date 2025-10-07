@@ -1,3 +1,4 @@
+import voluptuous as vol
 from __future__ import annotations
 from homeassistant import config_entries
 from homeassistant.components import bluetooth
