@@ -1,0 +1,16 @@
+{
+  "domain": "leddmx",
+  "name": "LEDDMX BLE Light",
+  "version": "1.1.0",
+  "documentation": "https://github.com/abhigkar/leddmx",
+  "requirements": ["bleak>=0.21.0"],
+  "codeowners": ["@abhigkar"],
+  "iot_class": "local_push",
+  "bluetooth": [
+    {
+      "manufacturer_id": 0,
+      "local_name": "LEDDMX-03"
+    }
+  ],
+  "config_flow": true
+}
