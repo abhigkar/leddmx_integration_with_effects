@@ -18,3 +18,13 @@ class LEDDMXConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 "name": discovery_info.name,
             },
         )
+    async def async_step_user(self, user_input=None):
+        """Manual setup (optional)."""
+        if user_input is None:
+            return self.async_show_form(step_id="user", data_schema=vol.Schema({vol.Optional("address"): str}))
+        
+        # Use provided address or default name
+        return self.async_create_entry(
+            title=user_input.get("address", "LEDDMX Light"),
+            data={"address": user_input.get("address"), "name": "Manual LEDDMX"},
+        )
