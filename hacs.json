@@ -1,5 +1,5 @@
 {
-  "name": "LEDDMX BLE",
+  "name": "LEDDMX BLE Controller",
   "content": "integration",
   "homeassistant": "2021.6.0",
   "zip_release": false
