@@ -52,28 +52,29 @@ class LEDDMXLight(LightEntity):
 
     async def async_turn_on(self, **kwargs):
         self._is_on = True
-        rgb = kwargs.get(ATTR_RGB_COLOR, self._color)
-        self._color = rgb
-        brightness = kwargs.get(ATTR_BRIGHTNESS, self._brightness)
-        self._brightness = brightness
+        # rgb = kwargs.get(ATTR_RGB_COLOR, self._color)
+        # self._color = rgb
+        # brightness = kwargs.get(ATTR_BRIGHTNESS, self._brightness)
+        # self._brightness = brightness
 
-        r, g, b = [int(c * brightness / 255) for c in rgb]
-        # Normal RGB packet
-        packets = [
-            bytes.fromhex(f"7B0503{r:02X}{g:02X}{b:02X}FFBF"),
-            bytes.fromhex(f"7EFF0503{r:02X}{g:02X}{b:02X}FFEF"),
-        ]
+        # r, g, b = [int(c * brightness / 255) for c in rgb]
+        # # Normal RGB packet
+        # packets = [
+        #     bytes.fromhex(f"7B0503{r:02X}{g:02X}{b:02X}FFBF"),
+        #     bytes.fromhex(f"7EFF0503{r:02X}{g:02X}{b:02X}FFEF"),
+        # ]
 
-        # Example effects: fade, flash, jump (common LEDDMX codes)
-        effect = kwargs.get("effect")
-        if effect == "fade":
-            packets.append(bytes.fromhex("7B0504FFFFFFFFBF"))
-        elif effect == "flash":
-            packets.append(bytes.fromhex("7B0503FFFFFFFFBF"))
-        elif effect == "jump":
-            packets.append(bytes.fromhex("7B0505FFFFFFFFBF"))
+        # # Example effects: fade, flash, jump (common LEDDMX codes)
+        # effect = kwargs.get("effect")
+        # if effect == "fade":
+        #     packets.append(bytes.fromhex("7B0504FFFFFFFFBF"))
+        # elif effect == "flash":
+        #     packets.append(bytes.fromhex("7B0503FFFFFFFFBF"))
+        # elif effect == "jump":
+        #     packets.append(bytes.fromhex("7B0505FFFFFFFFBF"))
 
-        await self._write_any(packets)
+        # await self._write_any(packets)
+        await self._write_ble(bytes.fromhex("7B040401FFFFFFFFBF"))
         self.async_write_ha_state()
 
     async def async_turn_off(self, **kwargs):
