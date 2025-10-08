@@ -1,6 +1,6 @@
 {
   "domain": "leddmx",
-  "name": "LEDDMX BLE Light",
+  "name": "LED-DMX Controller",
   "version": "1.1.0",
   "documentation": "https://github.com/abhigkar/leddmx_integration_with_effects",
   "requirements": ["bleak>=0.21.0"],
